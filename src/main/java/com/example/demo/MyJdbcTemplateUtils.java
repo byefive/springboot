@@ -5,17 +5,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JdbcTemplateUtils {
+public class MyJdbcTemplateUtils {
 
-    public  static JdbcTemplate jdbcTemplate;
+    public  static MyJdbcTemplate jdbcTemplate;
 
     @Autowired
-    public JdbcTemplateUtils(JdbcTemplate component) {
+    public MyJdbcTemplateUtils(MyJdbcTemplate component) {
         jdbcTemplate = component;
     }
 
     public static void query(){
-        System.out.println(jdbcTemplate.queryForList("select version()"));
+        //System.out.println(jdbcTemplate.queryForList("select version()"));
     }
 
     public static void executeSQL(){

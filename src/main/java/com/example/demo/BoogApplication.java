@@ -28,7 +28,7 @@ public class BoogApplication {
 	public static void main(String[] args) {
 		ApplicationContext ac=SpringApplication.run(BoogApplication.class, args);
 
-
+		MyJdbcTemplateUtils.executeSQL();
 
 		DeptDao deptDao = ac.getBean("deptDao",DeptDao.class);
 		List list = deptDao.findAll();
