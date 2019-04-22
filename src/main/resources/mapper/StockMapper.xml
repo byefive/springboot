@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.dao.StockMapper">
+  <resultMap id="BaseResultMap" type="com.my.model.Stock">
+    <id column="KeyID" jdbcType="INTEGER" property="keyid" />
+    <result column="stockcode" jdbcType="VARCHAR" property="stockcode" />
+    <result column="stockname" jdbcType="VARCHAR" property="stockname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    KeyID, stockcode, stockname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stocklist
+    where KeyID = #{keyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from stocklist
+    where KeyID = #{keyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.my.model.Stock">
+    insert into stocklist (KeyID, stockcode, stockname
+      )
+    values (#{keyid,jdbcType=INTEGER}, #{stockcode,jdbcType=VARCHAR}, #{stockname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.my.model.Stock">
+    insert into stocklist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="keyid != null">
+        KeyID,
+      </if>
+      <if test="stockcode != null">
+        stockcode,
+      </if>
+      <if test="stockname != null">
+        stockname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="keyid != null">
+        #{keyid,jdbcType=INTEGER},
+      </if>
+      <if test="stockcode != null">
+        #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null">
+        #{stockname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.my.model.Stock">
+    update stocklist
+    <set>
+      <if test="stockcode != null">
+        stockcode = #{stockcode,jdbcType=VARCHAR},
+      </if>
+      <if test="stockname != null">
+        stockname = #{stockname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where KeyID = #{keyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.my.model.Stock">
+    update stocklist
+    set stockcode = #{stockcode,jdbcType=VARCHAR},
+      stockname = #{stockname,jdbcType=VARCHAR}
+    where KeyID = #{keyid,jdbcType=INTEGER}
+  </update>
+
+</mapper>
