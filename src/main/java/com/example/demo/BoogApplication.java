@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,9 +13,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.example.demo"})
+@ComponentScan(basePackages = { "com.example.demo,com.my.dao"})
 @EnableAutoConfiguration
 @Configuration
+@MapperScan("com.my.dao")
 public class BoogApplication {
 
 
