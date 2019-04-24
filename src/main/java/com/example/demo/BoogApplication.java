@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.example.demo,com.my.dao"})
+@ComponentScan(basePackages = { "com.example.demo,com.my.dao,com.mvc.controller"})
 @EnableAutoConfiguration
 @Configuration
 @MapperScan("com.my.dao")
